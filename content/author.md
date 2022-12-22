@@ -1,7 +1,8 @@
 +++
-title = "About"
-date = "2022-12-23"
+title = "About The Author"
+date = "2022-12-22"
 author = "vbetsun"
+Toc = false
 +++
 
 # Hi there

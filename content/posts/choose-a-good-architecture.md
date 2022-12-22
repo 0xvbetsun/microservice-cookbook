@@ -1,18 +1,18 @@
 +++
-title = "Choose A Good Structure"
+title = "Choose A Good Architecture"
 date = "2022-12-21T19:54:52+02:00"
 author = "vbetsun"
-cover = ""
-tags = ["project", "structure"]
+cover = "images/app-architecture.png"
+tags = ["project", "architecture"]
 keywords = ["flat", "mvc", "ddd"]
-description = "How to choose a correct structure for the project?"
+description = "How to choose a correct architecture for the project?"
 showFullContent = false
 readingTime = true
 hideComments = false
 color = "" #color from the theme settings
 +++
 
-## Flat Structure
+## Flat
 
 This type of structure gives you a lot of flexibility without an overhead.
 
@@ -39,7 +39,7 @@ app
 └── server.go
 ```
 
-## MVC Structure
+## MVC
 
 **Model–view–controller (MVC)** is a software architectural pattern commonly used for developing user interfaces that divide the related program logic into three interconnected elements.
 This is done to separate internal representations of information from the ways information is presented to and accepted from the user
@@ -73,7 +73,7 @@ app
 └── main.go
 ```
 
-## DDD Structure
+## DDD
 
 **Domain-driven design (DDD)** is a major software design approach, focusing on modeling software to match a domain according to input from that domain's experts.
 
