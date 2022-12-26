@@ -23,8 +23,36 @@ color = "" #color from the theme settings
  - typecheck 
  - unused
  
+ I'm personally prefer `uber` linter or my own, a little bit extended version
+
+This is `uber`'s one:
+ ```yaml
+ # .golangci.yml
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+
+linters:
+  enable:
+    - errcheck
+    - goimports
+    - golint
+    - govet
+    - staticcheck
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
+```
+
+and the following configuration is mine preferable
 ```yaml
 # .golangci.yml
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+  
 linters:
   enable:
     # bugs
@@ -49,6 +77,10 @@ linters:
     # performance
     - prealloc
 
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
 ```
 And run it with:
 

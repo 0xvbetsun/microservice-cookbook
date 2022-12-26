@@ -60,10 +60,10 @@ func main() {
 	for {
 		row, err := r.Read()
 
+        if errors.Is(err, io.EOF) {
+			break
+		}
 		if err != nil {
-			if errors.Is(err, io.EOF) {
-				break
-			}
 			log.Fatal(err)
 		}
 
