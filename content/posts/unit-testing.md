@@ -11,3 +11,26 @@ readingTime = true
 hideComments = false
 color = "" #color from the theme settings
 +++
+
+### Benchmarks
+
+```go
+package main
+
+import (
+    "testing"
+)
+
+func BenchmarkPrimeNumbers(b *testing.B) {
+    num := 1000
+    for i := 0; i < b.N; i++ {
+        primeNumbers(num)
+    }
+}
+```
+
+And run it with
+
+```bash
+go test -bench=. -benchmem
+```

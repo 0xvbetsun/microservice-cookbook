@@ -52,6 +52,10 @@ paginate = 5
 
     [languages.en.menu]
       [[languages.en.menu.main]]
+        identifier = "bootstrap"
+        name = "Bootstrap Project"
+        url = "/bootstrap"
+      [[languages.en.menu.main]]
         identifier = "author"
         name = "Author"
         url = "/author"

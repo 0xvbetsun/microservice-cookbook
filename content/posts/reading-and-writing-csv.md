@@ -108,9 +108,96 @@ func main() {
 }
 ```
 
+
 ```bash
 go test -bench=. -benchmem
 
 BenchmarkRead-4             1444            723509 ns/op          111240 B/op       5014 allocs/op
 BenchmarkReadAll-4           890           1257324 ns/op          861174 B/op      10028 allocs/op
+```
+
+
+## Write CSV
+
+### Write Line-By-Line
+
+```go
+package main
+
+import (
+	"encoding/csv"
+	"log"
+	"os"
+)
+
+func main() {
+	rows := [][]string{
+		{"#id", "name", "age", "breed"},
+		{"1", "Mik", "3", "Chartreux"},
+		{"2", "Gabby", "3", "Bombay"},
+		{"3", "Shizik", "17", "Norwegian Forest"},
+	}
+
+	f, err := os.Create("cats.csv")
+	if err != nil {
+		log.Fatalln("error creating file:", err)
+	}
+	defer f.Close()
+
+	w := csv.NewWriter(f)
+
+	for _, row := range rows {
+		if err := w.Write(row); err != nil {
+			log.Fatalln("error writing row:", err)
+		}
+	}
+	w.Flush()
+
+	if err := w.Error(); err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
+
+### Write All
+
+```go
+package main
+
+import (
+	"encoding/csv"
+	"log"
+	"os"
+)
+
+func main() {
+	rows := [][]string{
+		{"#id", "name", "age", "breed"},
+		{"1", "Mik", "3", "Chartreux"},
+		{"2", "Gabby", "3", "Bombay"},
+		{"3", "Shizik", "17", "Norwegian Forest"},
+	}
+
+	f, err := os.Create("cats.csv")
+	if err != nil {
+		log.Fatalln("error creating file:", err)
+	}
+	defer f.Close()
+
+	w := csv.NewWriter(f)
+	err = w.WriteAll(rows) // calls Flush internally
+
+	if err != nil {
+		log.Fatalln("error writing rows:", err)
+	}
+}
+
+```
+
+```bash
+go test -bench=. -benchmem
+
+BenchmarkWrite-4            9879            118823 ns/op            4216 B/op          4 allocs/op
+BenchmarkWriteAll-4         7555            145045 ns/op            4216 B/op          4 allocs/op
 ```
